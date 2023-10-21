@@ -32,9 +32,10 @@ namespace BTLWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult UpdateNCC()
+        public ActionResult UpdateNCC(string id)
         {
-            return View();
+            var obj = db.NHACUNGCAP.Find(id);
+            return View(obj);
         }
         [HttpPost]
         public ActionResult UpdateNCC(NHACUNGCAP obj)
@@ -48,5 +49,26 @@ namespace BTLWeb.Controllers
 
             return RedirectToAction("Info");
         }
+        [HttpGet]
+        public ActionResult DeleteNCC(string mancc)
+        {
+            var obj = db.NHACUNGCAP.Find(mancc);
+            return View(obj);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteNCCConfirm(NHACUNGCAP obj)
+        {
+            var delncc = db.NHACUNGCAP.Find(obj.MANCC);
+            if (delncc!=null)
+            {
+                db.NHACUNGCAP.Remove(delncc);
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("Info");
+        }
+        
     }
 }

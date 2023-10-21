@@ -191,6 +191,7 @@
     <Content Include="Views\NHACUNGCAP\Info.cshtml" />
     <Content Include="Views\NHACUNGCAP\AddNCC.cshtml" />
     <Content Include="Views\NHACUNGCAP\UpdateNCC.cshtml" />
+    <Content Include="Views\NHACUNGCAP\DeleteNCC.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
