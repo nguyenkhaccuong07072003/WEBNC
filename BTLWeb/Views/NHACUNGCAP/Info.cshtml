@@ -41,9 +41,9 @@
         @Html.DisplayFor(modelItem => item.SDT)
     </td>
     <td>
-        @Html.ActionLink("Edit", "UpdateNCC", new { mancc = item.MANCC }) |
-        @Html.ActionLink("Details", "Details", new { mancc = item.MANCC }) |
-        @Html.ActionLink("Delete", "DeleteNCCConfirm", new { mancc = item.MANCC })
+        @Html.ActionLink("Edit", "UpdateNCC", new { id = item.MANCC }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MANCC }) |
+        @Html.ActionLink("Delete", "DeleteNCCConfirm", new { id = item.MANCC })
     </td>
 </tr>
 }
