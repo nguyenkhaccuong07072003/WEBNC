@@ -7,48 +7,45 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHANVIENController : Controller
+    public class PHIEUNHAPController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHANVIEN
+        // GET: PHIEUNHAP
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHANVIEN> nv = db.NHANVIEN.ToList();
-            return View(nv);
+            List<PHIEUNHAP> pn = db.PHIEUNHAP.ToList();
+            return View(pn);
             
         }
         [HttpGet]
-        public ActionResult AddNV()
+        public ActionResult AddPN()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNV(NHANVIEN nv)
+        public ActionResult AddPN(PHIEUNHAP pn)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHANVIEN.Add(nv);
+            db.PHIEUNHAP.Add(pn);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult UpdateNV(string id)
+        public ActionResult UpdatePN(string id)
         {
-            var obj = db.NHANVIEN.Find(id);
+            var obj = db.PHIEUNHAP.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNV(NHANVIEN obj)
+        public ActionResult UpdatePN(PHIEUNHAP obj)
         {
-            var edncc = db.NHANVIEN.Find(obj.MANV);
+            var edncc = db.PHIEUNHAP.Find(obj.MAPHIEUNHAP);
+            edncc.MAPHIEUNHAP = obj.MAPHIEUNHAP;
+            edncc.MANCC = obj.MANCC;
             edncc.MANV = obj.MANV;
-            edncc.TENNV = obj.TENNV;
-            edncc.NGAYSINH = obj.NGAYSINH;
-            edncc.GIOITINH = obj.GIOITINH;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT= obj.SDT;
-            edncc.LUONG = obj.LUONG;
-            edncc.ANHNV = obj.ANHNV;
+            edncc.NGAYNHAP = obj.NGAYNHAP;
+            edncc.TONGTIEN = obj.TONGTIEN;
             db.SaveChanges();
 
             return RedirectToAction("Info");

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BTLWeb.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+}
+
+<h2>Info</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddSP")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MASP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ANHSP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MASP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TENSP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MOTA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONGIA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ANHSP)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "UpdateSP", new { id = item.MASP }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MASP }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MASP })
+    </td>
+</tr>
+}
+
+</table>

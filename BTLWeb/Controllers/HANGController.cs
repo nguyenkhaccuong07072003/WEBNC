@@ -7,48 +7,46 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHANVIENController : Controller
+    public class HANGController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHANVIEN
+        // GET: HANG
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHANVIEN> nv = db.NHANVIEN.ToList();
-            return View(nv);
+            List<HANG> h = db.HANG.ToList();
+            return View(h);
             
         }
         [HttpGet]
-        public ActionResult AddNV()
+        public ActionResult AddH()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNV(NHANVIEN nv)
+        public ActionResult AddH(HANG h)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHANVIEN.Add(nv);
+            db.HANG.Add(h);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult UpdateNV(string id)
+        public ActionResult UpdateH(string id)
         {
-            var obj = db.NHANVIEN.Find(id);
+            var obj = db.HANG.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNV(NHANVIEN obj)
+        public ActionResult UpdateH(HANG obj)
         {
-            var edncc = db.NHANVIEN.Find(obj.MANV);
-            edncc.MANV = obj.MANV;
-            edncc.TENNV = obj.TENNV;
-            edncc.NGAYSINH = obj.NGAYSINH;
-            edncc.GIOITINH = obj.GIOITINH;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT= obj.SDT;
-            edncc.LUONG = obj.LUONG;
-            edncc.ANHNV = obj.ANHNV;
+            var edncc = db.HANG.Find(obj.MAHANG);
+            edncc.MAHANG = obj.MAHANG;
+            edncc.TENHANG = obj.TENHANG;
+            edncc.SOLUONG = obj.SOLUONG;
+            edncc.HSD = obj.HSD;
+            edncc.DONVITINH = obj.DONVITINH;
+            edncc.DONGIA = obj.DONGIA;
             db.SaveChanges();
 
             return RedirectToAction("Info");

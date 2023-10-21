@@ -7,48 +7,45 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHANVIENController : Controller
+    public class SANPHAMController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHANVIEN
+        // GET: SANPHAM
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHANVIEN> nv = db.NHANVIEN.ToList();
-            return View(nv);
+            List<SANPHAM> sp = db.SANPHAM.ToList();
+            return View(sp);
             
         }
         [HttpGet]
-        public ActionResult AddNV()
+        public ActionResult AddSP()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNV(NHANVIEN nv)
+        public ActionResult AddSP(SANPHAM sp)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHANVIEN.Add(nv);
+            db.SANPHAM.Add(sp);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult UpdateNV(string id)
+        public ActionResult UpdateSP(string id)
         {
-            var obj = db.NHANVIEN.Find(id);
+            var obj = db.SANPHAM.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNV(NHANVIEN obj)
+        public ActionResult UpdateSP(SANPHAM obj)
         {
-            var edncc = db.NHANVIEN.Find(obj.MANV);
-            edncc.MANV = obj.MANV;
-            edncc.TENNV = obj.TENNV;
-            edncc.NGAYSINH = obj.NGAYSINH;
-            edncc.GIOITINH = obj.GIOITINH;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT= obj.SDT;
-            edncc.LUONG = obj.LUONG;
-            edncc.ANHNV = obj.ANHNV;
+            var edncc = db.SANPHAM.Find(obj.MASP);
+            edncc.MASP = obj.MASP;
+            edncc.TENSP= obj.TENSP;
+            edncc.MOTA = obj.MOTA;
+            edncc.DONGIA = obj.DONGIA;
+            edncc.ANHSP = obj.ANHSP;
             db.SaveChanges();
 
             return RedirectToAction("Info");

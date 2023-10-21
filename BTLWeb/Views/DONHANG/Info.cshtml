@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BTLWeb.Models.DONHANG>
+
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+}
+
+<h2>Info</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddDH")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MADH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYDAT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TONGTIENTT)
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MADH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NGAYDAT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TONGTIENTT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "UpdateDH", new { id = item.MADH }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MADH }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MADH })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BTLWeb.Models.KHACHHANG>
 
 @{
-    ViewBag.Title = "Info";
+    ViewBag.Title = "Danh sách khách hàng";
 }
 
 <h2>Info</h2>
@@ -48,7 +48,7 @@
         @Html.DisplayFor(modelItem => item.ANHKH)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Edit", "UpdateKH", new { id = item.ID }) |
         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.ID })
     </td>

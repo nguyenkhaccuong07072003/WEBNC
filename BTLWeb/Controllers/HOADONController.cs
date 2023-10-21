@@ -7,48 +7,43 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHANVIENController : Controller
+    public class HOADONController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHANVIEN
+        // GET: HOADON
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHANVIEN> nv = db.NHANVIEN.ToList();
-            return View(nv);
-            
+            List<HOADON> hd = db.HOADON.ToList();
+            return View(hd);
         }
         [HttpGet]
-        public ActionResult AddNV()
+        public ActionResult AddHD()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNV(NHANVIEN nv)
+        public ActionResult AddHD(HOADON hd)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHANVIEN.Add(nv);
+            db.HOADON.Add(hd);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult UpdateNV(string id)
+        public ActionResult UpdateHD(string id)
         {
-            var obj = db.NHANVIEN.Find(id);
+            var obj = db.HOADON.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNV(NHANVIEN obj)
+        public ActionResult UpdateHD(HOADON obj)
         {
-            var edncc = db.NHANVIEN.Find(obj.MANV);
+            var edncc = db.HOADON.Find(obj.MAHD);
+            edncc.MAHD = obj.MAHD;
             edncc.MANV = obj.MANV;
-            edncc.TENNV = obj.TENNV;
-            edncc.NGAYSINH = obj.NGAYSINH;
-            edncc.GIOITINH = obj.GIOITINH;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT= obj.SDT;
-            edncc.LUONG = obj.LUONG;
-            edncc.ANHNV = obj.ANHNV;
+            edncc.NGAYLAP = obj.NGAYLAP;
+            edncc.THANHTIEN = obj.THANHTIEN;
             db.SaveChanges();
 
             return RedirectToAction("Info");

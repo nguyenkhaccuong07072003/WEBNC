@@ -7,49 +7,49 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class KHACHHANGController : Controller
+    public class DONHANGController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: KHACHHANG
+        // GET: DONHANG
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<KHACHHANG> kh = db.KHACHHANG.ToList();
-            return View(kh);
+            List<DONHANG> dh = db.DONHANG.ToList();
+            return View(dh);
+            
         }
-
         [HttpGet]
-        public ActionResult AddKH()
+        public ActionResult AddDH()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddKH(KHACHHANG kh)
+        public ActionResult AddDH(DONHANG dh)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.KHACHHANG.Add(kh);
+            db.DONHANG.Add(dh);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
 
         [HttpGet]
-        public ActionResult UpdateKH(string id)
+        public ActionResult UpdateDH(string id)
         {
-            var obj = db.KHACHHANG.Find(id);
+            var obj = db.DONHANG.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateKH(KHACHHANG obj)
+        public ActionResult UpdateDH(DONHANG obj)
         {
-            var edncc = db.KHACHHANG.Find(obj.ID);
-            edncc.ID= obj.ID;
-            edncc.TENKH = obj.TENKH;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT = obj.SDT;
-            edncc.ANHKH = obj.ANHKH;
+            var edncc = db.DONHANG.Find(obj.MADH);
+            edncc.MADH = obj.MADH;
+            edncc.ID = obj.ID;
+            edncc.NGAYDAT = obj.NGAYDAT;
+            edncc.TONGTIENTT = obj.TONGTIENTT;
             db.SaveChanges();
 
             return RedirectToAction("Info");
         }
-    }
-}
+        
+            }
+        }
