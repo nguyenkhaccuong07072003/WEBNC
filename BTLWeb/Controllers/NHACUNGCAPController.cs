@@ -50,9 +50,9 @@ namespace BTLWeb.Controllers
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult DeleteNCC(string mancc)
+        public ActionResult DeleteNCC(string id)
         {
-            var obj = db.NHACUNGCAP.Find(mancc);
+            var obj = db.NHACUNGCAP.Find(id);
             return View(obj);
         }
         [HttpPost]
@@ -60,12 +60,11 @@ namespace BTLWeb.Controllers
         public ActionResult DeleteNCCConfirm(NHACUNGCAP obj)
         {
             var delncc = db.NHACUNGCAP.Find(obj.MANCC);
-            if (delncc!=null)
+            if (delncc != null)
             {
                 db.NHACUNGCAP.Remove(delncc);
                 db.SaveChanges();
             }
-
 
             return RedirectToAction("Info");
         }
