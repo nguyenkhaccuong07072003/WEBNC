@@ -1,0 +1,57 @@
+﻿@model BTLWeb.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+}
+
+<h2>DeleteSP</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SANPHAM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANHSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANHSP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "SANPHAM", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(Model => Model.MASP)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Info")
+        </div>
+    }
+</div>

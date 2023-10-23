@@ -7,66 +7,64 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHANVIENController : Controller
+    public class KHACHHANGController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHANVIEN
+        // GET: KHACHHANG
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHANVIEN> nv = db.NHANVIEN.ToList();
-            return View(nv);
-            
+            List<KHACHHANG> kh = db.KHACHHANG.ToList();
+            return View(kh);
         }
+
         [HttpGet]
-        public ActionResult AddNV()
+        public ActionResult AddKH()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNV(NHANVIEN nv)
+        public ActionResult AddKH(KHACHHANG kh)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHANVIEN.Add(nv);
+            db.KHACHHANG.Add(kh);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
+
         [HttpGet]
-        public ActionResult UpdateNV(string id)
+        public ActionResult UpdateKH(string id)
         {
-            var obj = db.NHANVIEN.Find(id);
+            var obj = db.KHACHHANG.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNV(NHANVIEN obj)
+        public ActionResult UpdateKH(KHACHHANG obj)
         {
-            var edncc = db.NHANVIEN.Find(obj.MANV);
-            edncc.MANV = obj.MANV;
-            edncc.TENNV = obj.TENNV;
-            edncc.NGAYSINH = obj.NGAYSINH;
-            edncc.GIOITINH = obj.GIOITINH;
+            var edncc = db.KHACHHANG.Find(obj.ID);
+            edncc.ID= obj.ID;
+            edncc.TENKH = obj.TENKH;
             edncc.DIACHI = obj.DIACHI;
-            edncc.SDT= obj.SDT;
-            edncc.LUONG = obj.LUONG;
-            edncc.ANHNV = obj.ANHNV;
+            edncc.SDT = obj.SDT;
+            edncc.ANHKH = obj.ANHKH;
             db.SaveChanges();
 
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult DeleteNV(string id)
+        public ActionResult DeleteKH(string id)
         {
-            var obj = db.NHANVIEN.Find(id);
+            var obj = db.KHACHHANG.Find(id);
             return View(obj);
         }
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult DeleteNVConfirm(NHANVIEN obj)
+        public ActionResult DeleteKHConfirm(KHACHHANG obj)
         {
-            var nv = db.NHANVIEN.Find(obj.MANV);
-            if (nv != null)
+            var kh = db.KHACHHANG.Find(obj.ID);
+            if (kh != null)
             {
-                db.NHANVIEN.Remove(nv);
+                db.KHACHHANG.Remove(kh);
                 db.SaveChanges();
             }
 

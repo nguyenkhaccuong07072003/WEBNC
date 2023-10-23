@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BTLWeb.Models.HANG>
+
+@{
+    ViewBag.Title = "Danh sách hàng";
+}
+
+<h2>Info</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddH")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MAHANG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENHANG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HSD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONVITINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MAHANG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TENHANG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SOLUONG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HSD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONVITINH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONGIA)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "UpdateH", new { id = item.MAHANG }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MAHANG }) |
+        @Html.ActionLink("Delete", "DeleteH", new { id = item.MAHANG })
+    </td>
+</tr>
+}
+
+</table>

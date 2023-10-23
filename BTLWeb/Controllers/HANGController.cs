@@ -7,67 +7,68 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHACUNGCAPController : Controller
+    public class HANGController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHACUNGCAP
+        // GET: HANG
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHACUNGCAP> ncc = db.NHACUNGCAP.ToList();
-            return View(ncc);
+            List<HANG> h = db.HANG.ToList();
+            return View(h);
+            
         }
         [HttpGet]
-        public ActionResult AddNCC()
+        public ActionResult AddH()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNCC (NHACUNGCAP ncc)
+        public ActionResult AddH(HANG h)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHACUNGCAP.Add(ncc);
+            db.HANG.Add(h);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
-
         [HttpGet]
-        public ActionResult UpdateNCC(string id)
+        public ActionResult UpdateH(string id)
         {
-            var obj = db.NHACUNGCAP.Find(id);
+            var obj = db.HANG.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNCC(NHACUNGCAP obj)
+        public ActionResult UpdateH(HANG obj)
         {
-            var edncc = db.NHACUNGCAP.Find(obj.MANCC);
-            edncc.MANCC = obj.MANCC;
-            edncc.TENNCC = obj.TENNCC;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT = obj.SDT;
+            var edncc = db.HANG.Find(obj.MAHANG);
+            edncc.MAHANG = obj.MAHANG;
+            edncc.TENHANG = obj.TENHANG;
+            edncc.SOLUONG = obj.SOLUONG;
+            edncc.HSD = obj.HSD;
+            edncc.DONVITINH = obj.DONVITINH;
+            edncc.DONGIA = obj.DONGIA;
             db.SaveChanges();
 
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult DeleteNCC(string id)
+        public ActionResult DeleteH(string id)
         {
-            var obj = db.NHACUNGCAP.Find(id);
+            var obj = db.HANG.Find(id);
             return View(obj);
         }
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult DeleteNCCConfirm(NHACUNGCAP obj)
+        public ActionResult DeleteHConfirm(HANG obj)
         {
-            var ncc = db.NHACUNGCAP.Find(obj.MANCC);
-            if (ncc != null) 
+            var hh = db.HANG.Find(obj.MAHANG);
+            if (hh != null)
             {
-                db.NHACUNGCAP.Remove(ncc);
+                db.HANG.Remove(hh);
                 db.SaveChanges();
             }
 
             return RedirectToAction("Info");
         }
-        
     }
 }

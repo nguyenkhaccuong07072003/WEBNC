@@ -7,67 +7,67 @@ using System.Web.Mvc;
 
 namespace BTLWeb.Controllers
 {
-    public class NHACUNGCAPController : Controller
+    public class SANPHAMController : Controller
     {
         private Models.QLQCFEntities db = new Models.QLQCFEntities();
-        // GET: NHACUNGCAP
+        // GET: SANPHAM
         public ActionResult Info()
         {
             QLQCFEntities db = new QLQCFEntities();
-            List<NHACUNGCAP> ncc = db.NHACUNGCAP.ToList();
-            return View(ncc);
+            List<SANPHAM> sp = db.SANPHAM.ToList();
+            return View(sp);
+            
         }
         [HttpGet]
-        public ActionResult AddNCC()
+        public ActionResult AddSP()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddNCC (NHACUNGCAP ncc)
+        public ActionResult AddSP(SANPHAM sp)
         {
             QLQCFEntities db = new QLQCFEntities();
-            db.NHACUNGCAP.Add(ncc);
+            db.SANPHAM.Add(sp);
             db.SaveChanges();
             return RedirectToAction("Info");
         }
-
         [HttpGet]
-        public ActionResult UpdateNCC(string id)
+        public ActionResult UpdateSP(string id)
         {
-            var obj = db.NHACUNGCAP.Find(id);
+            var obj = db.SANPHAM.Find(id);
             return View(obj);
         }
         [HttpPost]
-        public ActionResult UpdateNCC(NHACUNGCAP obj)
+        public ActionResult UpdateSP(SANPHAM obj)
         {
-            var edncc = db.NHACUNGCAP.Find(obj.MANCC);
-            edncc.MANCC = obj.MANCC;
-            edncc.TENNCC = obj.TENNCC;
-            edncc.DIACHI = obj.DIACHI;
-            edncc.SDT = obj.SDT;
+            var edncc = db.SANPHAM.Find(obj.MASP);
+            edncc.MASP = obj.MASP;
+            edncc.TENSP= obj.TENSP;
+            edncc.MOTA = obj.MOTA;
+            edncc.DONGIA = obj.DONGIA;
+            edncc.ANHSP = obj.ANHSP;
             db.SaveChanges();
 
             return RedirectToAction("Info");
         }
         [HttpGet]
-        public ActionResult DeleteNCC(string id)
+        public ActionResult DeleteSP(string id)
         {
-            var obj = db.NHACUNGCAP.Find(id);
+            var obj = db.SANPHAM.Find(id);
             return View(obj);
         }
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult DeleteNCCConfirm(NHACUNGCAP obj)
+        public ActionResult DeleteSPConfirm(SANPHAM obj)
         {
-            var ncc = db.NHACUNGCAP.Find(obj.MANCC);
-            if (ncc != null) 
+            var sp = db.SANPHAM.Find(obj.MASP);
+            if (sp != null)
             {
-                db.NHACUNGCAP.Remove(ncc);
+                db.SANPHAM.Remove(sp);
                 db.SaveChanges();
             }
 
             return RedirectToAction("Info");
         }
-        
     }
 }

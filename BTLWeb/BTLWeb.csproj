@@ -112,8 +112,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DONHANGController.cs" />
+    <Compile Include="Controllers\HANGController.cs" />
+    <Compile Include="Controllers\HOADONController.cs" />
+    <Compile Include="Controllers\KHACHHANGController.cs" />
     <Compile Include="Controllers\NHACUNGCAPController.cs" />
     <Compile Include="Controllers\NHANVIENController.cs" />
+    <Compile Include="Controllers\PHIEUNHAPController.cs" />
+    <Compile Include="Controllers\SANPHAMController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,6 +198,31 @@
     <Content Include="Views\NHACUNGCAP\AddNCC.cshtml" />
     <Content Include="Views\NHACUNGCAP\UpdateNCC.cshtml" />
     <Content Include="Views\NHACUNGCAP\DeleteNCC.cshtml" />
+    <Content Include="Views\KHACHHANG\Info.cshtml" />
+    <Content Include="Views\KHACHHANG\AddKH.cshtml" />
+    <Content Include="Views\KHACHHANG\UpdateKH.cshtml" />
+    <Content Include="Views\SANPHAM\Info.cshtml" />
+    <Content Include="Views\SANPHAM\AddSP.cshtml" />
+    <Content Include="Views\SANPHAM\UpdateSP.cshtml" />
+    <Content Include="Views\NHANVIEN\Info.cshtml" />
+    <Content Include="Views\NHANVIEN\AddNV.cshtml" />
+    <Content Include="Views\NHANVIEN\UpdateNV.cshtml" />
+    <Content Include="Views\DONHANG\Info.cshtml" />
+    <Content Include="Views\DONHANG\AddDH.cshtml" />
+    <Content Include="Views\DONHANG\UpdateDH.cshtml" />
+    <Content Include="Views\HANG\Info.cshtml" />
+    <Content Include="Views\HANG\AddH.cshtml" />
+    <Content Include="Views\HANG\UpdateH.cshtml" />
+    <Content Include="Views\PHIEUNHAP\Info.cshtml" />
+    <Content Include="Views\PHIEUNHAP\AddPN.cshtml" />
+    <Content Include="Views\PHIEUNHAP\UpdatePN.cshtml" />
+    <Content Include="Views\HOADON\Info.cshtml" />
+    <Content Include="Views\HOADON\AddHD.cshtml" />
+    <Content Include="Views\HOADON\UpdateHD.cshtml" />
+    <Content Include="Views\SANPHAM\DeleteSP.cshtml" />
+    <Content Include="Views\NHANVIEN\DeleteNV.cshtml" />
+    <Content Include="Views\KHACHHANG\DeleteKH.cshtml" />
+    <Content Include="Views\HANG\DeleteH.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,7 +232,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NHANVIEN\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
